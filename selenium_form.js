@@ -10,6 +10,8 @@ it('Login with valid creds', () =>{
     cy.get('[type="text"]').type('tomsmith'),
     cy.get('[type="password"]').type('SuperSecretPassword!'),
     cy.get('.fa').click()
+
+    cy.get('.flash.success').contains('You logged into a secure area').should('exist')
 });
 
 it('Login with invalid creds', () =>{
@@ -26,5 +28,7 @@ it('Logout from app', () =>{
     cy.get('[type="text"]').type('tomsmith'),
     cy.get('[type="password"]').type('SuperSecretPassword!'),
     cy.get('.fa').click()
-    cy.get('.button').click()   
+    cy.get('.button').click() 
+    
+    cy.get('.flash.success').contains('You logged out of the secure area!').should('exist')
 });
